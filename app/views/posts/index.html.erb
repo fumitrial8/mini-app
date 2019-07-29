@@ -1,2 +1,6 @@
-<h1>Posts#index</h1>
-<%= render "/layouts/post_window" %>
+<%= render "post_window" %>
+<nav class="indigo accent-4">
+  <div class="nav-wrapper">
+    <%= paginate(@posts) %>
+  </div>
+</nav>
