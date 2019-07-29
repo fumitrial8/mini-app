@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+  <%= post.user.name %><br>
+  <%= post.text %><br>
+  <%= post.created_at %><br>
+<% end %>
