@@ -1,0 +1,12 @@
+<% @posts.each do |post| %>
+  <%= post.user.name %><br>
+  <%= post.text %><br>
+  <%= post.created_at %><br>
+
+  <% if user_signed_in? && post.user_id == current_user.id %>
+    <div>
+      <%= link_to "EDIT", "/posts/#{post.id}/edit" %>
+      <%= link_to "DELETE", "/posts/#{post.id}", method: :delete %> 
+    </div>
+  <% end %>
+<% end %>
