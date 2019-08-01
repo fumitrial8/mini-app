@@ -20,9 +20,25 @@ function getPosition() {
 }
 
 function showGoogleMap(){
-  var latlon = gon.post.latitude + "," + gon.post.longitude;
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&key=AIzaSyCU-duYfWRvha9NrxBvmCJdSwJmUpr7XBg";
-  document.getElementById("button").innerHTML = "<img src='"+img_url+"'>";
+  var map;
+  var marker;
+  var b = document.getElementById("button");
+  var center = {
+    lat: gon.post.latitude,
+    lng: gon.post.longitude
+  };
+  function initgoogleMap(){
+    map = new google.maps.Map(document.getElementById('sample'),{
+      center: center,
+      zoom: 17
+    });
+    marker = new google.maps.Marker({
+      position: center,
+      map: map
+    });
+  }
+  initgoogleMap()
+  b.style.display = "none";
 }
 
 //参考にしたサイトhttps://www.w3schools.com/html/html5_geolocation.asp
