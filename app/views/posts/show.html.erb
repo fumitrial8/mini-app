@@ -1,0 +1,14 @@
+<%= @post.user.name %><br>
+<%= @post.text %><br>
+<%= @post.latitude %><br>
+<%= @post.longitude %><br>
+<%= @post.created_at %><br>
+<% if @post.latitude && @post.longitude  %>
+  <button id="button" onclick="showGoogleMap()">投稿した位置を表示する</button><br>
+<% end %>
+<% if user_signed_in? && @post.user_id == current_user.id %>
+  <div>
+    <%= link_to "EDIT", "/posts/#{@post.id}/edit" %>
+    <%= link_to "DELETE", "/posts/#{@post.id}", method: :delete %> 
+  </div>
+<% end %>

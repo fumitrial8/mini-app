@@ -1,8 +1,17 @@
-<%= form_for(@post, url: "/posts") do |f| %>
-  <%= f.text_field :text %><br>
+<button id="button" onclick="getPosition()">位置情報を有効にする</button><br>
+<p id="getPosition"></p>
+<%= form_for(@post, url: "/posts/#{@post.id if @post}") do |f| %>
+  <%= f.label "Text" %>
+  <%= f.text_field :text, placeholder: "input text" %><br>
+  <%= f.label "latitude" %>
+  <%= f.text_field :latitude, placeholder: "input latitude", id: "latitude" %><br>
+  <%= f.label "longitude" %>
+  <%= f.text_field :longitude, placeholder: "input longitude", id: "longitude" %><br>
   <% if @post.text %>
     <%= f.submit "Update", method: :patch %>    
   <% else %>
     <%= f.submit "Submit", method: :post %>
   <% end %>
+
+  
 <% end %>
